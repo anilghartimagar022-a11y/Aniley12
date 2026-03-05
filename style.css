@@ -1,0 +1,68 @@
+body {
+    font-family: 'Playfair Display', serif;
+}
+
+.font-dancing-script {
+    font-family: 'Dancing Script', cursive;
+}
+
+.font-playfair-display {
+    font-family: 'Playfair Display', serif;
+}
+
+/* Photo Gallery styles */
+.gallery-image {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease-in-out;
+    cursor: pointer;
+}
+
+.gallery-image:hover {
+    transform: scale(1.03);
+}
+
+/* Animated Border for Video - NEW Implementation */
+.video-border-wrapper {
+    position: relative; /* already set by Tailwind 'relative' */
+    overflow: hidden; /* already set by Tailwind 'overflow-hidden' */
+    border-radius: 0.5rem; /* Matches Tailwind 'rounded-lg' */
+    /* Add padding to create the space for the border if needed,
+       or make pseudo-element larger than wrapper and video smaller */
+}
+
+.video-border-wrapper::before {
+    content: '';
+    position: absolute;
+    top: -100%;
+    left: -100%;
+    width: 300%;
+    height: 300%;
+    background: conic-gradient(
+        from 0deg,
+        #F8BBD0, /* Light Pink */
+        #E0F2F7, /* Light Blue */
+        #D1C4E9, /* Light Purple */
+        #FFCDD2, /* Lighter Pink */
+        #F8BBD0  /* Light Pink (to complete the cycle) */
+    );
+    z-index: 0;
+    animation: rotate-border 8s linear infinite; /* Anti-clockwise rotation */
+    transform-origin: center center; /* Ensure rotation is from the center */
+}
+
+/* The video element itself is z-10 and covers the center */
+.video-border-wrapper video {
+    position: relative; /* To make z-index work */
+    z-index: 10;
+    /* The h-full and w-full are already set by Tailwind on the video tag */
+    /* background-color: white; /* Optional: background for the video if it has transparent parts */
+}
+
+@keyframes rotate-border {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(-360deg); } /* Anti-clockwise */
+}

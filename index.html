@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For My Love</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-pink-50 text-gray-800">
+
+    <header class="text-center py-12">
+        <h1 class="text-6xl font-dancing-script text-pink-500">Our Story</h1>
+        <p class="text-lg font-playfair-display mt-2">A collection of beautiful moments.</p>
+    </header>
+
+    <main class="container mx-auto px-4 pb-12">
+        <div id="timeline" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <!-- Memory cards will be injected here by JavaScript -->
+        </div>
+    </main>
+
+    <!-- Interstitial Message Section -->
+    <section class="py-16 bg-pink-200 text-center text-pink-700">
+        <div class="container mx-auto px-4">
+            <p class="text-3xl font-dancing-script mb-4">"Every moment with you is a cherished memory, a beautiful star in our constellation of love."</p>
+            <p class="text-xl font-playfair-display">- With all my heart</p>
+            <div class="video-border-wrapper mt-8 mx-auto w-full max-w-lg rounded-lg shadow-2xl h-[400px] transition-all duration-300 ease-in-out hover:scale-105 hover:shadow-2xl relative overflow-hidden">
+                <video controls loop muted class="w-full h-full object-cover rounded-lg relative z-10" src="wanna.mp4">
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+        </div>
+    </section>
+
+    <!-- Photo Gallery Section -->
+    <section class="py-12 bg-pink-100">
+        <div class="container mx-auto px-4">
+            <h2 class="text-4xl font-playfair-display text-center mb-8">Gallery</h2>
+            <div id="photo-gallery" class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-4">
+                <!-- Photos will be injected here by JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <section class="bg-white py-12 shadow-inner">
+        <div class="container mx-auto px-4 max-w-lg">
+            <h2 class="text-4xl font-playfair-display text-center mb-6">Add a New Memory</h2>
+            <form id="add-memory-form" class="space-y-4">
+                <input type="text" id="memory-title" placeholder="Memory Title" class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-300" required>
+                <textarea id="memory-description" placeholder="Describe the moment..." rows="4" class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-300" required></textarea>
+                <input type="text" id="memory-image-url" placeholder="Image URL (optional)" class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-300">
+                <button type="submit" class="w-full bg-pink-400 text-white font-bold py-3 rounded-lg hover:bg-pink-500 transition-colors duration-300">
+                    Add Memory
+                </button>
+            </form>
+        </div>
+    </section>
+
+    <footer class="text-center py-6 bg-pink-100">
+        <p class="font-playfair-display">Made with ❤️</p>
+    </footer>
+
+    <template id="memory-card-template">
+        <div class="bg-white rounded-lg shadow-lg overflow-hidden transform hover:scale-105 transition-transform duration-300 relative">
+            <img src="https://via.placeholder.com/400x300" alt="Memory Image" class="w-full h-56 object-cover memory-image">
+            <div class="p-6">
+                <h3 class="text-2xl font-playfair-display font-bold mb-2 memory-title"></h3>
+                <p class="text-gray-600 memory-description"></p>
+                <div class="mt-4 flex justify-end space-x-2">
+                    <button class="edit-memory-btn bg-blue-400 text-white px-3 py-1 rounded-md hover:bg-blue-500 transition-colors">Edit</button>
+                    <button class="delete-memory-btn bg-red-400 text-white px-3 py-1 rounded-md hover:bg-red-500 transition-colors">Delete</button>
+                </div>
+            </div>
+        </div>
+    </template>
+    
+    <!-- Lightbox Modal for Photo Gallery -->
+    <div id="lightbox" class="fixed inset-0 bg-black bg-opacity-75 hidden items-center justify-center z-50">
+        <span id="lightbox-close" class="absolute top-4 right-6 text-white text-4xl cursor-pointer">&times;</span>
+        <img id="lightbox-image" src="" alt="Full-size image" class="max-w-full max-h-full rounded-lg">
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
